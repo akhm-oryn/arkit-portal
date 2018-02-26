@@ -19,10 +19,19 @@ func createBox(isDoor : Bool) -> SCNNode {
     
     //Add first box
     let firstBox = SCNBox(width: width, height: height, length: length, chamferRadius: 0)
-    let firstBox = SCNNode(geometry: firstBox)
+    let firstBoxNode = SCNNode(geometry: firstBox)
     firstBoxNode.renderingOrder = 200
     
     node.addChildNode(firstBoxNode)
+    
+    //Add masked box
+    let maskedBox = SCNBox(width: width, height: height, length: length, chamferRadius: 0)
+    maskedBox.firstMaterial?.diffuse.contents = UIColor.white
+    maskedBox.firstMaterial?.transparency = 0.0001
+    
+    let maskedBoxNode = SCNNode(geometry: maskedBox)
+    maskedBoxNode.renderingOrder = 100
+    maskedBoxNode.position = SCNVector3.init(width, 0, 0)
     
     return node
 }
