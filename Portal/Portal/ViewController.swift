@@ -40,6 +40,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.run(configuration)
     }
     
+    func setupScene() {
+        let node = SCNNode()
+        
+        let leftWall = createBox(isDoor: false)
+        leftWall.position = SCNVector3.init(-length / 2, 0, 0)
+        let rightWall = createBox(isDoor: false)
+        let topWall = createBox(isDoor: false)
+        let bottomWall = createBox(isDoor: false)
+        
+        let leftDoorSide = createBox(isDoor: true)
+        let rightDoorSide = createBox(isDoor: true)
+
+        
+        self.sceneView.scene.rootNode.addChildNode(node)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
