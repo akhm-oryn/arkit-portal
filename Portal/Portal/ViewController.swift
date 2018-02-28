@@ -28,6 +28,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        setupScene()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +44,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func setupScene() {
         let node = SCNNode()
+        node.position = SCNVector3.init(0, 0, 0)
         
         let leftWall = createBox(isDoor: false)
         leftWall.position = SCNVector3.init(-length / 2, 0, 0)
@@ -63,6 +66,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let rightDoorSide = createBox(isDoor: true)
         rightDoorSide.position = SCNVector3.init(doorLength / 2, 0, length / 2)
+        
+        node.addChildNode(leftWall)
+        node.addChildNode(rightWall)
+        node.addChildNode(topWall)
+        node.addChildNode(bottomWall)
+        node.addChildNode(backWall)
+        node.addChildNode(leftDoorSide)
+        node.addChildNode(rightDoorSide)
         
         self.sceneView.scene.rootNode.addChildNode(node)
     }
