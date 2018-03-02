@@ -73,6 +73,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         rightDoorSide.position = SCNVector3.init(doorLength / 2, 0, length / 2)
         rightDoorSide.eulerAngles = SCNVector3.init(0, -90.0.degreesToRadians, 0)
         
+        //create light
+        
+        let light = SCNLight()
+        light.type = .spot
+        light.spotInnerAngle = 70
+        light.spotOuterAngle = 120
+        light.zNear = 0.00001
+        light.zFar = 5
+        light.castsShadow = true
+        light.shadowRadius = 200
+        light.shadowColor = UIColor.black.withAlphaComponent(0.3)
+        light.shadowMode = .deferred
+        
         node.addChildNode(leftWall)
         node.addChildNode(rightWall)
         node.addChildNode(topWall)
