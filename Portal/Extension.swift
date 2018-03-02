@@ -12,7 +12,7 @@ import ARKit
 
 var doorLength : CGFloat = 0.3
 
-var width: CGFloat = 0.2
+var width: CGFloat = 0.02
 var height: CGFloat = 1
 var length: CGFloat = 1
 
