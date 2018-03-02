@@ -86,6 +86,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         light.shadowColor = UIColor.black.withAlphaComponent(0.3)
         light.shadowMode = .deferred
         
+        let constraint = SCNLookAtConstraint(target: bottomWall)
+        constraint.isGimbalLockEnabled = true
+        
+        let lightNode = SCNNode()
+        lightNode.light = light
+        lightNode.position = SCNVector3.init(0, height / 2, 0)
+        lightNode.constraints = [constraint]
+        node.addChildNode(lightNode)
+        
         node.addChildNode(leftWall)
         node.addChildNode(rightWall)
         node.addChildNode(topWall)

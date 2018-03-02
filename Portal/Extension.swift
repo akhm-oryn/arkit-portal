@@ -35,6 +35,8 @@ func createBox(isDoor : Bool) -> SCNNode {
     maskedBoxNode.renderingOrder = 100
     maskedBoxNode.position = SCNVector3.init(width, 0, 0)
     
+    node.addChildNode(maskedBoxNode)
+    
     return node
 }
 
