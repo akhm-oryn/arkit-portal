@@ -91,7 +91,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let lightNode = SCNNode()
         lightNode.light = light
-        lightNode.position = SCNVector3.init(0, height / 2, 0)
+        lightNode.position = SCNVector3.init(0, 0.4, 0)
         lightNode.constraints = [constraint]
         node.addChildNode(lightNode)
         
